@@ -1,0 +1,155 @@
+package HW_FactoryMethod;
+
+public class Test {
+    public static void main(String[] args) {
+        SomeCarFactory factory = new ElectricCarFactory();
+        CarType car = factory.createCar();
+
+        car.info();
+    }
+}
+
+
+
+
+package HW_abstractFactory;
+
+public interface OrdersFactory{
+    SaladOrderFactory orderSalad();
+    SoupOrderFactory orderSoup();
+}
+
+
+
+
+package HW_abstractFactory;
+
+public class RawFoodOrderFactory implements OrdersFactory{
+    @Override
+    public SaladOrderFactory orderSalad() {
+        return new WaldorfSalad();
+    }
+
+    @Override
+    public SoupOrderFactory orderSoup() {
+        return new TomatoSoup();
+    }
+}
+
+package HW_abstractFactory;
+
+public class MeatFoodOrderFactory implements OrdersFactory{
+    @Override
+    public SaladOrderFactory orderSalad() {
+        return new PineappleMix();
+    }
+
+    @Override
+    public SoupOrderFactory orderSoup() {
+        return new NauryzKozheSoup();
+    }
+}
+
+package HW_abstractFactory;
+
+public class VegetarianFoodOrderFactory implements OrdersFactory{
+    @Override
+    public SaladOrderFactory orderSalad() {
+        return new BroccoliSalad();
+    }
+
+    @Override
+    public SoupOrderFactory orderSoup() {
+        return new PeaSoup();
+    }
+}
+
+
+
+
+
+
+package HW_abstractFactory;
+
+public interface SaladOrderFactory {
+    void info();
+}
+
+package HW_abstractFactory;
+
+public interface SoupOrderFactory {
+    void info();
+}
+
+
+package HW_abstractFactory;
+
+public interface SoupOrderFactory {
+    void info();
+}
+
+
+
+
+
+package HW_abstractFactory;
+
+public interface SoupOrderFactory {
+    void info();
+}
+
+
+package HW_abstractFactory;
+
+public class PineappleMix implements SaladOrderFactory{
+
+    @Override
+    public void info() {
+        System.out.println("Russian Pineapple Cheese and Chicken Ham Salad.");
+    }
+}
+
+
+package HW_abstractFactory;
+
+public class WaldorfSalad implements SaladOrderFactory{
+
+    @Override
+    public void info() {
+        System.out.println("Dressed with a tahini-based raw Goddess salad.");
+    }
+}
+
+
+
+
+
+
+package HW_abstractFactory;
+
+public class NauryzKozheSoup implements SoupOrderFactory{
+    @Override
+    public void info() {
+        System.out.println("Traditional meat soup of nomads with a lot of ingredients.");
+    }
+}
+
+package HW_abstractFactory;
+
+public class PeaSoup implements SoupOrderFactory{
+    @Override
+    public void info() {
+        System.out.println("Vegetarian soup made typically from dried peas.");
+    }
+}
+
+package HW_abstractFactory;
+
+public class TomatoSoup implements SoupOrderFactory{
+    @Override
+    public void info() {
+        System.out.println("Deliciously creamy raw tomato soup.");
+    }
+}
+
+

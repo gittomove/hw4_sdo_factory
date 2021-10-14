@@ -1,0 +1,108 @@
+package HW_FactoryMethod_Second;
+
+public class Test {
+    public static void main(String[] args) {
+        CarType car = SomeCarFactory.createCar(CarType.Toyota);
+        car.info();
+    }
+}
+
+
+
+
+
+package HW_FactoryMethod_Second;
+
+public class SomeCarFactory {
+    protected int price;
+
+    public static CarType createCar(String type){
+        if(type.equals(CarType.TESLA)){
+            return new Tesla(90000, "Model X Long Range", "600km");
+        }else if(type.equals(CarType.Toyota)){
+            return new Toyota(50000,"Camry 3.5", "250km/full petrol");
+        }else{
+            return null;
+        }
+    }
+
+}
+
+
+
+
+
+
+package HW_FactoryMethod_Second;
+
+public interface CarType {
+    String TESLA="Tesla";
+    String Toyota="Toyota Camry";
+    void info();
+}
+
+
+
+
+
+
+
+package HW_FactoryMethod_Second;
+
+public class Tesla implements CarType {
+
+    private int price;
+    private String model;
+    private String range;
+
+    public Tesla(int price, String model, String range) {
+        this.price = price;
+        this.model = model;
+        this.range = range;
+    }
+
+    @Override
+    public String toString() {
+        return "Tesla{" +
+                "price=" + price +
+                ", model='" + model + '\'' +
+                ", range='" + range + '\'' +
+                '}';
+    }
+
+    @Override
+    public void info() {
+        System.out.println("It is electric car - Tesla Model X.\n" + toString());
+    }
+}
+
+
+package HW_FactoryMethod_Second;
+
+public class Toyota implements CarType {
+
+    private int price;
+    private String model;
+    private String range;
+
+    public Toyota(int price, String model, String range) {
+        this.price = price;
+        this.model = model;
+        this.range = range;
+    }
+
+    @Override
+    public String toString() {
+        return "Toyota{" +
+                "price=" + price +
+                ", model='" + model + '\'' +
+                ", range='" + range + '\'' +
+                '}';
+    }
+
+    @Override
+    public void info() {
+
+        System.out.println("It is Petrol car - Toyota Camry.\n" + toString());
+    }
+}
